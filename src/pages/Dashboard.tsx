@@ -42,9 +42,9 @@ const Dashboard = () => {
               </SelectTrigger>
               <SelectContent>
                 {carsLoading ? (
-                  <SelectItem value="loading" disabled>Loading cars...</SelectItem>
+                  <SelectItem value="loading">Loading cars...</SelectItem>
                 ) : cars.length === 0 ? (
-                  <SelectItem value="none" disabled>No vehicles found</SelectItem>
+                  <SelectItem value="none">No vehicles found</SelectItem>
                 ) : (
                   cars.map((car) => (
                     <SelectItem key={car.id} value={car.id.toString()}>
