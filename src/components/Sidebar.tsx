@@ -38,7 +38,7 @@ const Sidebar = () => {
         <SidebarMenu>
           {menuItems.map((item) => (
             <SidebarMenuItem key={item.path}>
-              <SidebarMenuButton asChild active={isActive(item.path)}>
+              <SidebarMenuButton asChild isActive={isActive(item.path)}>
                 <Link to={item.path} className="flex items-center gap-2">
                   <item.icon className="h-5 w-5" />
                   <span>{item.name}</span>
