@@ -12,7 +12,7 @@ const defaultHeaders = {
 
 export async function fetchAllCars(): Promise<Car[]> {
   try {
-    const response = await fetch(`${API_BASE_URL}/cars`, {
+    const response = await fetch(`${API_BASE_URL}/api/cars`, {
       headers: defaultHeaders,
     })
     if (!response.ok) {
@@ -28,7 +28,7 @@ export async function fetchAllCars(): Promise<Car[]> {
 
 export async function fetchCarDetails(carId: number): Promise<Car> {
   try {
-    const response = await fetch(`${API_BASE_URL}/cars/${carId}`, {
+    const response = await fetch(`${API_BASE_URL}/api/cars/${carId}`, {
       headers: defaultHeaders,
     })
     if (!response.ok) {
@@ -46,7 +46,7 @@ export async function createCar(
   carData: Omit<Car, 'id' | 'created_at' | 'updated_at'>
 ): Promise<Car> {
   try {
-    const response = await fetch(`${API_BASE_URL}/cars`, {
+    const response = await fetch(`${API_BASE_URL}/api/cars`, {
       method: 'POST',
       headers: defaultHeaders,
       body: JSON.stringify({ car: carData }),
@@ -67,8 +67,8 @@ export async function fetchServiceHistory(
 ): Promise<ServiceHistoryEntry[]> {
   try {
     const url = carId
-      ? `${API_BASE_URL}/cars/${carId}/service_history_entries`
-      : `${API_BASE_URL}/service_history_entries`
+      ? `${API_BASE_URL}/api/cars/${carId}/service_history_entries`
+      : `${API_BASE_URL}/api/service_history_entries`
 
     const response = await fetch(url, {
       headers: defaultHeaders,
@@ -93,7 +93,7 @@ export async function createServiceEntry(
 ): Promise<ServiceHistoryEntry> {
   try {
     const response = await fetch(
-      `${API_BASE_URL}/cars/${carId}/service_history_entries`,
+      `${API_BASE_URL}/api/cars/${carId}/service_history_entries`,
       {
         method: 'POST',
         headers: defaultHeaders,
@@ -116,7 +116,7 @@ export async function fetchServiceEntryDetails(
 ): Promise<ServiceHistoryEntry> {
   try {
     const response = await fetch(
-      `${API_BASE_URL}/service_history_entries/${entryId}`,
+      `${API_BASE_URL}/api/service_history_entries/${entryId}`,
       {
         headers: defaultHeaders,
       }
